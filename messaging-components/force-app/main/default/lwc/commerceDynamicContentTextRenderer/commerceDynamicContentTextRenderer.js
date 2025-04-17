@@ -16,25 +16,34 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
   connectedCallback() {
     try {
-      this.entryPayload = JSON.parse(this.conversationEntry?.entryPayload || '{}');
+      let rawPayload = this.conversationEntry?.entryPayload;
+      try {
+        this.entryPayload = JSON.parse(rawPayload);
+      } catch {
+        // Not valid JSON, use as plain text
+        this.entryPayload = { abstractMessage: { staticContent: { text: rawPayload } } };
+      }
+  
       this.staticText = this.entryPayload?.abstractMessage?.staticContent;
 
-      const parsedText = typeof this.staticText?.text === 'string'
-        ? JSON.parse(this.staticText.text)
-        : this.staticText?.text;
-
-      // Extract contentType
+      let parsedText;
+      if (typeof this.staticText?.text === "string") {
+        try {
+          parsedText = JSON.parse(this.staticText.text);
+        } catch (e) {
+          parsedText = this.staticText.text; // fallback to plain string
+        }
+      } else {
+        parsedText = this.staticText?.text;
+      }
+  
       this.contentType = parsedText?.contentType || '';
-
-      // Extract product data if applicable
-      if (
-        this.isProductRecommendations &&
-        this.parsedText?.products
-      ) {
-        this.productData = parsedText?.products;
+  
+      if (this.isProductRecommendations && parsedText?.products) {
+        this.productData = parsedText.products;
       }
     } catch (error) {
-      console.error('Failed to parse entryPayload:', error);
+      console.error('Failed to process entryPayload:', error);
     }
   }
 
