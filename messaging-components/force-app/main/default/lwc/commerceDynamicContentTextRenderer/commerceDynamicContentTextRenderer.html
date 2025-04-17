@@ -4,5 +4,8 @@
             <product-recommendation-grid-message-component products={productData} onaddtocart={handleAddToCart}>
             </product-recommendation-grid-message-component>
         </template>
+        <template if:false={isProductRecommendations}>
+            <lightning-formatted-rich-text value={textContent}></lightning-formatted-rich-text>
+        </template>
     </div>
 </template>
