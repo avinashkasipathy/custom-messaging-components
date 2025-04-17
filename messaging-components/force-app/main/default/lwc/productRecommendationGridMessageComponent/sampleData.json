@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Brushed leather loafers",
+    "description": "Sophisticated classic design",
+    "price": 1200,
+    "imageUrl": "https://example.com/images/loafers-black.png"
+  },
+  {
+    "id": "2",
+    "name": "Laced leather loafers",
+    "description": "Classic details and sporty",
+    "price": 1250,
+    "imageUrl": "https://example.com/images/loafers-brown.png"
+  },
+  {
+    "id": "3",
+    "name": "Brushed leather Chelsea boots",
+    "description": "Contemporary elegance",
+    "price": 1490,
+    "imageUrl": "https://example.com/images/chelsea-black.png"
+  }
+]
