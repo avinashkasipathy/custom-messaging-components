@@ -4,8 +4,13 @@ export default class ProductRecommendationGridMessageComponent extends Lightning
     @api products = [];
 
     handleAddToCart(event) {
-        const productId = event.target.dataset.id;
-        const product = this.products.find(p => p.id === productId);
-        this.dispatchEvent(new CustomEvent('addtocart', { detail: { product } }));
+        const index = event.target.dataset.index;
+        const product = this.products[index];
+
+        if (product) {
+            this.dispatchEvent(new CustomEvent('addtocart', {
+                detail: { product }
+            }));
+        }
     }
 }

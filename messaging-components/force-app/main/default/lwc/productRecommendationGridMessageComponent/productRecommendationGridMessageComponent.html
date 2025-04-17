@@ -1,7 +1,7 @@
 <template>
     <div class="product-list">
-        <template for:each={products} for:item="product">
-            <div key={product.id} class="product-item">
+        <template for:each={products} for:item="product" for:index="index">
+            <div key={product.name} class="product-item">
                 <img src={product.imageUrl} alt={product.name} class="product-image" />
 
                 <div class="product-info">
@@ -11,7 +11,7 @@
 
                 <div class="product-action">
                     <p class="product-price">${product.price}</p>
-                    <button class="buy-button" data-id={product.id} onclick={handleAddToCart}>BUY</button>
+                    <button class="buy-button" data-index={index} onclick={handleAddToCart}>BUY</button>
                 </div>
             </div>
         </template>
