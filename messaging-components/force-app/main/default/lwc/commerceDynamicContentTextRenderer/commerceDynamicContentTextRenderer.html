@@ -1,7 +1,9 @@
 <template>
     <div class={generateMessageBubbleClassname}>
         <template if:true={isProductRecommendations}>
-            <c-product-recommendation-grid-message-component products={productData} onaddtocart={handleAddToCart}>
+            <c-product-recommendation-grid-message-component
+                products={productData}
+                onaddtocart={handleAddToCart}>
             </c-product-recommendation-grid-message-component>
         </template>
         <template if:false={isProductRecommendations}>
