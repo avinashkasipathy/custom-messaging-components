@@ -17,7 +17,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
   connectedCallback() {
     try {
       this.entryPayload = JSON.parse(this.conversationEntry?.entryPayload || '{}');
-      this.staticText = this.entryPayload?.abstractMessage?.staticContent?.text;
+      this.staticText = this.entryPayload?.abstractMessage?.staticContent;
 
       const parsedText = typeof this.staticText?.text === 'string'
         ? JSON.parse(this.staticText.text)
