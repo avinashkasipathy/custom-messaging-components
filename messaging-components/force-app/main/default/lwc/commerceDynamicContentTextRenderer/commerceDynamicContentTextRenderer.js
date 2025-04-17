@@ -16,7 +16,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
   connectedCallback() {
     try {
-      this.entryPayload = JSON.parse(this.conversationEntry?.entryPayload || '{}');
+      this.entryPayload = JSON.parse(this.conversationEntry?.entryPayload);
       this.staticText = this.entryPayload?.abstractMessage?.staticContent;
 
       const parsedText = typeof this.staticText?.text === 'string'
@@ -31,7 +31,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
         this.isProductRecommendations &&
         this.parsedText?.products
       ) {
-        this.productData = this.parsedText?.products;
+        this.productData = parsedText?.products;
       }
     } catch (error) {
       console.error('Failed to parse entryPayload:', error);
