@@ -17,16 +17,21 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
   connectedCallback() {
     try {
       this.entryPayload = JSON.parse(this.conversationEntry?.entryPayload || '{}');
+      this.staticText = this.entryPayload?.abstractMessage?.staticContent?.text;
+
+      const parsedText = typeof this.staticText?.text === 'string'
+        ? JSON.parse(this.staticText.text)
+        : this.staticText?.text;
 
       // Extract contentType
-      this.contentType = this.entryPayload?.abstractMessage?.contentType || '';
+      this.contentType = parsedText?.contentType || '';
 
       // Extract product data if applicable
       if (
         this.isProductRecommendations &&
-        this.entryPayload?.abstractMessage?.staticContent?.products
+        this.parsedText?.products
       ) {
-        this.productData = this.entryPayload.abstractMessage.staticContent.products;
+        this.productData = this.parsedText?.products;
       }
     } catch (error) {
       console.error('Failed to parse entryPayload:', error);
