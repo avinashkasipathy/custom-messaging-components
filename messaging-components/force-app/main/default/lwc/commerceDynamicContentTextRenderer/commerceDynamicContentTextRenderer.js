@@ -57,7 +57,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
   handleAddToCart(event) {
     const product = event.detail.product.name;
-    this.configuration.util.sendTextMessage(`Can you help me add ${product} to cart`);
+    this.configuration.util.sendTextMessage(`Can you help me add ${product} in 'Cardinal Red & Black' and size 'S' to cart`);
   }
 
   get generateMessageBubbleClassname() {
