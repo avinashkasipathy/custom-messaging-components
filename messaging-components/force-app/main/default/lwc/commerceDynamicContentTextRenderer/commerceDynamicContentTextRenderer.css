@@ -4,16 +4,16 @@
  
   .Agent,
   .Chatbot {
-    color: #FFFFFF;
-    background-color: #066AFE;
+    color: var(--contrastPrimaryColor, #333333);
+    background-color: #F2F2F3;
     border-radius: 10px 10px 10px 0;
     float: left;
     padding: 0.5em;
   }
  
   .EndUser {
-    background-color: #EEF4FF;
-    color: black;
+    background-color: var(--secondaryColor, #005290);
+    color: var(--slds-g-color-neutral-base-100,#fff);
     margin-left: auto;
     padding: 0.5em;
     border-radius: 10px 10px 0 10px;
