@@ -81,16 +81,26 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
     }
   }
 
-  get generateMessageBubbleClassname() {
+   /**
+    * Returns the class name of the message bubble.
+    * @returns {string}
+    */
+   get generateMessageBubbleClassname() {
     if (this.isSupportedSender()) {
-      return `${MESSAGE_CONTENT_CLASS} ${this.sender?.toLowerCase()}`;
+      return `${MESSAGE_CONTENT_CLASS} ${this.sender}`;
     } else {
       throw new Error(`Unsupported participant type passed in: ${this.sender}`);
     }
   }
 
+  /**
+   * True if the sender is a support participant type.
+   * @returns {Boolean}
+   */
   isSupportedSender() {
-    return PARTICIPANT_TYPES.includes(this.sender);
+    return PARTICIPANT_TYPES.some(
+      (participantType) => this.sender === participantType,
+    );
   }
 
   get textContent() {
