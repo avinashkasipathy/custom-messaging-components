@@ -76,7 +76,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
     const product = event?.detail?.product?.name;
     if (product) {
       this.configuration.util.sendTextMessage(
-        `Can you help me add ${product} with Color option White and Size Option 6`
+        `Can you help me add ${product} with Color Option 'White' and Size Option '6'`
       );
     }
   }
